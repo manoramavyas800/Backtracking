@@ -1,0 +1,19 @@
+
+
+public class PrintPath {
+    static int printP(int sr,int sc,int er,int ec){
+        if(sr>er||sc>ec)return 0;
+        if(sr==er&&sc==ec)return 1;
+        int rightP=printP(sr+1,sc,er,ec);
+        int downP=printP(sr,sc+1,er,ec);
+        int total=rightP+downP;
+        return total;
+    }
+    public static void main(String[] args) {
+        int row=3;
+        int col=4;
+        int count=printP(1,1,row,col);
+        System.out.println(count);
+
+    }
+}
