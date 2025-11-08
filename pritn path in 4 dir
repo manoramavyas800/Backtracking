@@ -1,0 +1,16 @@
+    static void printP(int sr,int sc,int er, int ec, String s,boolean [][]isVisited){
+        if(sr<0||sc<0)return;
+        if(sr>er||sc>ec)return;
+        if(isVisited[sr][sc])return;
+        if(sr==er&&sc==ec){
+            System.out.println(s);
+            return;
+        }
+        isVisited[sr][sc]=true;
+        printP(sr,sc+1,er,ec,s+"R",isVisited);
+        printP(sr+1,sc,er,ec,s+"D",isVisited);
+        printP(sr,sc-1,er,ec,s+"L",isVisited);
+        printP(sr-1,sc,er,ec,s+"U",isVisited);
+        //Backtracking
+        isVisited[sr][sc]=false;
+    }
