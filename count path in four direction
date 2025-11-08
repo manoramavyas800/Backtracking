@@ -1,0 +1,17 @@
+    static int printP(int sr,int sc,int er,int ec,boolean[][]isVisited){
+        if(sr>er||sc>ec)return 0;
+        if(sr==er&&sc==ec)return 1;
+        if(sr<0||sc<0)return 0;
+        if(isVisited[sr][sc])return 0;
+
+        //Recursion
+        isVisited[sr][sc]=true;
+        int rightP=printP(sr,sc+1,er,ec,isVisited);
+        int downP=printP(sr+1,sc,er,ec,isVisited);
+        int leftP=printP(sr,sc-1,er,ec,isVisited);
+        int upP=printP(sr-1,sc,er,ec,isVisited);
+        int total=rightP+downP+leftP+upP;
+        //BackTracking
+        isVisited[sr][sc]=false;
+        return total;
+    }
